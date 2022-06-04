@@ -1,23 +1,28 @@
-// Primer desafio opcional entregable.
+debugger
+alert("Hola, vamos a cotizar tu seguro juntos")
+let metros = parseInt(prompt("Ingrese la cantidad de metros a asegurar"))
+let alarma = confirm("¿Tenés alarma?") 
+let consumidorFinal = confirm("¿Sos consumidor final?")
 
-let numero = parseInt(prompt("Hola, ingrese un numero del 1 al 20"));
-
-
-for (let i = 1; i <= 20; i++){
-    let resultado = numero + i;
-    console.log("Este es nuestro resultado:",resultado)
-    if (resultado === 10){
-        console.log("Llegaste a la mitad, tranqui...")
-    }else if(resultado === 15){
-        console.warn("Te estas acercando al limite...")
-    }else if(resultado === 20){
-        console.error("Chocaste!!!")
-        break;
-    }else if(numero >= 20){
-        alert("recarga la página... dijimos hasta el 20")
-        break;
+if (alarma === true && consumidorFinal === true){
+    function cotizador (metros, precio, IVA) {
+        return ( metros * precio * IVA )
+    }
+}else if( alarma === false && consumidorFinal === true ){
+    function cotizador (metros, precio, IVA, sinAlarma) {
+        return ( metros * precio * IVA * sinAlarma )
+    }
+}else if( alarma === true && consumidorFinal === false){
+    alert("Recordá que deberas pagar tus impuestos")
+    function cotizador (metros, precio) {
+        return ( metros * precio)
+    }
+}else if( alarma === false && consumidorFinal === false){
+    alert("Recordá que deberas pagar tus impuestos")
+    function cotizador (metros, precio, sinAlarma) {
+        return ( metros * precio * sinAlarma)
     }
 }
 
-
-
+let resultado = cotizador(metros, precio, IVA, sinAlarma)
+alert("Tu seguro costará: $" + resultado + " por mes.")
