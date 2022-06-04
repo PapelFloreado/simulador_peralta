@@ -1,4 +1,3 @@
-debugger
 alert("Hola, vamos a cotizar tu seguro juntos")
 let metros = parseInt(prompt("Ingrese la cantidad de metros a asegurar"))
 let alarma = confirm("¿Tenés alarma?") 
