@@ -43,6 +43,13 @@ header nav {
 header .menu {
   background-color: white; }
 
+footer {
+  background-color: #01003a;
+  padding: 3rem;
+  color: white; }
+  footer a img {
+    width: 10%; }
+
 /* Views */
 main {
   padding-top: 3rem;
@@ -102,6 +109,9 @@ form {
   line-height: 2rem;
   font-size: 1em;
   margin: 5rem; }
+  form .btn-primary {
+    background-color: #01003a;
+    border-color: #01003a; }
   form h2 {
     font-size: 3.5em; }
 
@@ -110,6 +120,9 @@ section .seguros {
 
 section.cards__seguros {
   background-color: white; }
+  section.cards__seguros .btn-primary {
+    background-color: #01003a;
+    border-color: #01003a; }
   section.cards__seguros .card-group .card {
     margin: 1rem;
     border: none; }

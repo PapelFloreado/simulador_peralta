@@ -76,24 +76,37 @@ div.cotiza {
         color: $principal;
     }
 }
+
+
 form {
-    border-radius: 2rem;
-    font-family: $font-primary;
-    padding: 5rem;
-    line-height: 2rem;
-    font-size: $text-sm;
-    margin:5rem;
-    
-    h2{
-        font-size: $text-md;
+        
+        border-radius: 2rem;
+        font-family: $font-primary;
+        padding: 5rem;
+        line-height: 2rem;
+        font-size: $text-sm;
+        margin:5rem;
+        
+        .btn-primary {
+            background-color: rgb(1, 0, 58);
+            border-color: rgb(1, 0, 58);
+        }
+        
+        h2{
+            font-size: $text-md;
+        }
     }
-}
+
 section .seguros{
     background-color: $principal;
 }
 
 section.cards__seguros {
     background-color: $principal;
+    .btn-primary {
+        background-color: rgb(1, 0, 58);
+        border-color: rgb(1, 0, 58);
+    }
     .card-group{
         
         .card {
