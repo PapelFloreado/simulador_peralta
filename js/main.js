@@ -35,11 +35,11 @@ console.table(seguros)
 
 alert("filtremos un producto juntos")
 let filtrado = console.table(filtrarProducto())
-alert(filtrado)
+
 
 alert("ahora busquemos un producto")
 let busqueda = console.table(buscarProducto())
-alert(busqueda)
+
 
 alert("vamos a simular algo")
 
