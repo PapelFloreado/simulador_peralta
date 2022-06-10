@@ -1,0 +1,117 @@
+/* Imports */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap");
+/* Miscelaneous*/
+/* Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+/* Globals */
+html {
+  font-size: 62.5%;
+  font-family: "Open Sans", sans-serif; }
+
+body {
+  min-height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  color: black; }
+  body nav {
+    position: fixed; }
+
+.contenedor {
+  max-width: 1080px;
+  margin: 0 auto; }
+
+a {
+  text-decoration: none;
+  color: white; }
+
+/* Helpers */
+/* Partials */
+header nav {
+  font-family: "Open Sans", sans-serif;
+  font-size: 2em;
+  padding-top: 4rem;
+  color: #01003a;
+  background-color: white; }
+  header nav div {
+    justify-content: flex-end; }
+
+header .menu {
+  background-color: white; }
+
+/* Views */
+main {
+  padding-top: 3rem;
+  font-family: "Open Sans", sans-serif;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas: "carousel"; }
+  main h1 {
+    color: white;
+    grid-area: carousel;
+    z-index: 1;
+    font-size: 8em;
+    align-self: center;
+    padding-bottom: 3rem;
+    padding: 2rem; }
+  main div {
+    grid-area: carousel; }
+    main div img {
+      filter: contrast(75%);
+      opacity: 0.9; }
+  main section {
+    background-color: #01003a; }
+    main section article a img.wasp {
+      width: 25%;
+      filter: contrast(75%);
+      padding: 3rem 0; }
+
+div.cotiza {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "img1 text1" "img1 text2" "img1 text3";
+  background-image: url("../../assets/img/img4.jpg");
+  background-size: cover;
+  backdrop-filter: blur(50px);
+  padding: 3rem; }
+  div.cotiza .img1 {
+    grid-area: img1;
+    width: 30%; }
+  div.cotiza .text1 {
+    grid-area: text1;
+    font-size: 3.5em;
+    color: white; }
+  div.cotiza .text2 {
+    grid-area: text2;
+    font-size: 3.5em;
+    color: white; }
+  div.cotiza .text3 {
+    grid-area: text3;
+    font-size: 3.5em;
+    font-weight: 500;
+    color: white; }
+
+form {
+  border-radius: 2rem;
+  font-family: "Open Sans", sans-serif;
+  padding: 5rem;
+  line-height: 2rem;
+  font-size: 1em;
+  margin: 5rem; }
+  form h2 {
+    font-size: 3.5em; }
+
+section .seguros {
+  background-color: white; }
+
+section.cards__seguros {
+  background-color: white; }
+  section.cards__seguros .card-group .card {
+    margin: 1rem;
+    border: none; }
+    section.cards__seguros .card-group .card img .card-img-top {
+      border-radius: 1rem 1 rem 0 0; }

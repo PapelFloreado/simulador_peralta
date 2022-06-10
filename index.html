@@ -4,17 +4,161 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./js/variables.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="./js/objetos.js"></script>
+    <link rel="stylesheet" href="./css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script defer src="./js/objetos.js"></script>
+    <script defer src="./js/variables.js"></script>
+    <script defer src="./js/main.js"></script>
     <title>Simulador de Seguros</title>
 </head>
 <body>
     <header>
+        <nav class="navbar fixed-top navbar-expand-lg position-fixed  p-4 d-flex">
+            <div class="container">
+              <a href="./index.html">
+                <img src="./assets/img/logo.svg" width="50%" alt="logo de la empresa">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./index.html">HOME</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
     </header>
-    <main>
+    <main >
+      <h1 data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-duration="1500" data-aos-delay="150" data-aos-offset="0" class="container" >CONTRATÁ TU SEGURO HOY</h1>
+      <div id="carouselExampleInterval " class="carousel carousel-dark slide " data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="2000">
+            <img src="./assets/img/img1.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="./assets/img/img2.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="./assets/img/img3.jpg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <section class="tele" >
+        <article class="flex-column container justify-content-center ">
+          <a href="https://web.whatsapp.com/" target="_blank">  
+            <img class="wasp container d-flex justify-content-center " src="./assets/img/frame 1.svg" alt="">
+          </a>
+        </article>
+        <div class="cotiza">
+          <p data-aos="fade-up" data-aos-duration="1500" class="text1">Calidad garantizada con años de trayectoria de respaldo.</p>
+          <p data-aos="fade-up" data-aos-duration="1500" class="text2">Asesorate con nuestros agentes oficiales o cotiza ahora mismo un seguro a tu medida.</p>
+          <p data-aos="fade-up" data-aos-duration="1500" class="text3">RÁPIDO, SEGURO, PARA VOS.</p>
+          <img data-aos="fade-right" data-aos-duration="1500" data-aos-offset="300" data-aos-easing="ease-in-sine" class="container img1 cotiza__badge" src="./assets/img/badge.png" alt="">
+        </div>
+      </section>
+      <form class="container col-4 bg-light" action="">
+        <h2 data-aos="fade-up" data-aos-duration="1500">Cotiza un seguro a tu medida.</h2>
+        <label for="">Cuantos m2 deseas asegurar</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text">m2</span>
+          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+          <span class="input-group-text">.00</span>
+        </div>
+        <select class="form-select" aria-label="Default select example">
+          <option selected>¿Tenes alarma?</option>
+          <option value="1">Tengo alarma</option>
+          <option value="2">No tengo alarma</option>
+        </select>
+        <label for="">¿Sos Consumidor Final?</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Si
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+          <label class="form-check-label" for="flexRadioDefault2">
+            No
+          </label>
+        </div>
+        <input class="btn btn-primary" type="submit" value="COTIZAR">
+      </form>
+     <section class="cards__seguros container">
+      <div class="card-group">
+        <div class="card">
+          <img src="./assets/img/familia.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <a href="#" class="btn btn-primary">¡LO QUIERO!</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./assets/img/hogar.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">¡LO QUIERO!</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./assets/img/auto1.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            <a href="#" class="btn btn-primary">¡LO QUIERO!</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-group">
+        <div class="card">
+          <img src="./assets/img/smartphone.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <a href="#" class="btn btn-primary">¡LO QUIERO!</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./assets/img/incendio.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">¡LO QUIERO!</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="./assets/img/adulto.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            <a href="#" class="btn btn-primary">¡LO QUIERO!</a>
+          </div>
+        </div>
+      </div>
+     </section>
+      
     </main>
     <footer>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
 </body>
 </html>

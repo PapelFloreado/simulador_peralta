@@ -1,0 +1,16 @@
+header {
+    nav{
+        font-family: $font-primary;
+        font-size: $text-md-sm;
+        padding-top: 4rem;
+        color: rgb(1, 0, 58);
+        background-color: white;
+        div{
+            justify-content: flex-end;
+        }
+    }
+    .menu{
+        background-color: $principal;
+
+    }
+}

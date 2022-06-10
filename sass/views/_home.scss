@@ -1,0 +1,108 @@
+main {
+    padding-top: 3rem;
+    font-family: $font-primary;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "carousel";
+    h1 {
+        color:$principal;
+        grid-area: carousel;
+        z-index: 1;
+        font-size: $text-xlg;
+        align-self:center;
+        padding-bottom: 3rem;
+        padding: 2rem;
+        
+    }
+    
+    div {
+        grid-area: carousel;
+        img{
+            filter: contrast(75%);
+            opacity: 0.9;
+        }
+    }
+    section {
+        background-color: rgb(1, 0, 58);
+        article {
+            a {
+                
+                img.wasp{
+                    width: 25%;
+                    
+                    filter: contrast(75%);
+                    padding: 3rem 0;
+                    
+                }
+            }
+            
+            
+        }
+    }
+    
+}
+div.cotiza {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "img1 text1"
+    "img1 text2"
+    "img1 text3";
+    background-image: url("../../assets/img/img4.jpg");
+    background-size: cover; 
+    backdrop-filter: blur(50px);
+    padding: 3rem;
+    
+
+    .img1 {
+        grid-area: img1;
+        width: 30%;
+    }
+    .text1{
+        grid-area: text1;
+        font-size: $text-md;
+        color: $principal;
+    }
+    .text2{
+        grid-area: text2;
+        font-size: $text-md;
+        color: $principal;
+    }
+    .text3{
+        grid-area: text3;
+        font-size: $text-md;
+        font-weight: 500;
+        color: $principal;
+    }
+}
+form {
+    border-radius: 2rem;
+    font-family: $font-primary;
+    padding: 5rem;
+    line-height: 2rem;
+    font-size: $text-sm;
+    margin:5rem;
+    
+    h2{
+        font-size: $text-md;
+    }
+}
+section .seguros{
+    background-color: $principal;
+}
+
+section.cards__seguros {
+    background-color: $principal;
+    .card-group{
+        
+        .card {
+            img .card-img-top {
+                border-radius: 1rem 1 rem 0 0;
+            }
+
+            margin: 1rem;
+            border:none;
+        }
+    }
+}
