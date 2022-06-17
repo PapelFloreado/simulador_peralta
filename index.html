@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script defer src="./js/objetos.js"></script>
     <script defer src="./js/variables.js"></script>
+    <script defer src="./js/objetos.js"></script>
     <script defer src="./js/main.js"></script>
     <title>Simulador de Seguros</title>
 </head>
@@ -62,7 +62,7 @@
       </div>
 <!-- Carousel End -->
 <!-- wsp Start -->
-      <section class="tele" >
+      <section class="tele wasp" >
         <article class="flex-column container justify-content-center ">
           <a href="https://web.whatsapp.com/" target="_blank">  
             <img class="wasp container d-flex justify-content-center " src="./assets/img/frame 1.svg" alt="">
@@ -80,106 +80,74 @@
 <!-- Badge End-->
 <!-- Form Start-->
       <h2 data-aos="fade-right" data-aos-duration="1500" class="container display-1 mt-5 text-lg align-text-center">A medida, para vos...</h2>
-        <form class="container col-5 bg-light" action="">
+        <form id="cotizador" class="container col-5 bg-light" action="">
           <h2 class="mb-5 text-center display-3" data-aos="fade-up" data-aos-duration="1500">Cotiza un seguro a tu medida.</h2>
           <label class="mb-2" for="">Cuantos m2 deseas asegurar</label>
           <div class="input-group mb-3">
             <span class="input-group-text">m2</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <input id="metros2" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
             <span class="input-group-text">.00</span>
           </div>
-          <select class="form-select mb-3" aria-label="Default select example">
+          <select id="select" class="form-select mb-3" aria-label="Default select example">
             <option selected>¿Tenes alarma?</option>
-            <option value="1">Tengo alarma</option>
-            <option value="2">No tengo alarma</option>
+            <option  value="val1">Tengo alarma</option>
+            <option  value="val2">No tengo alarma</option>
           </select>
           <label for="">¿Sos Consumidor Final?</label>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <div  class="form-check">
+            <input  class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="val1" checked>
             <label class="form-check-label" for="flexRadioDefault1">
               Si
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
             <label class="form-check-label" for="flexRadioDefault2">
               No
             </label>
           </div>
-          <input class="btn btn-primary" type="submit" value="COTIZAR">
+          <button id="btnSubmit" class="btn btn-primary" type="submit">Cotizar Mi Seguro</button>
+          <div id="cotizacion">
+          </div>
         </form>
 <!-- Form End -->
+<!-- CheckOut Start-->
+<section class=" fixed-bottom mb-4 ms-3">
+  <div class="carrito flex-row  ">
+    <img class="container  align-items-end justify-content-start market btn " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" src="./assets/img/cart.png" alt="">
+  </div>
+        <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel">CARRITO DE COMPRAS</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul id="listadoCarrito" class="list-group list-group-flush">
+            </ul>
+            
+          </div>
+        </div>
+</section>
+<!-- CheckOut End-->
 <!-- Cards Start-->
-     <section class="cards__seguros container pb-5">
-      <div class="card-group" data-aos="fade-up"data-aos-duration="3000">
-        <div class="card">
-          <img src="./assets/img/familia.jpg" class="card-img-top rounded" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Seguro Paquete Completo</h5>
-            <p class="card-text">Este seguro cuida a lo que mas queres. Aprovechalo ahora.</p>
-            <a href="#" class="btn btn-primary">¡LO QUIERO!</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./assets/img/hogar.jpg" class="card-img-top rounded" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Seguro Solo Hogar</h5>
-            <p class="card-text">Este seguro cuida tu casa. Aprovechalo ahora.</p>
-            <a href="#" class="btn btn-primary">¡LO QUIERO!</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./assets/img/auto1.jpg" class="card-img-top rounded" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Seguro Solo Vehículo</h5>
-            <p class="card-text">Cuida tu vehículo para que te lleve donde quieras. Aprovechalo ahroa.</p>
-            <a href="#" class="btn btn-primary">¡LO QUIERO!</a>
-          </div>
-        </div>
-      </div>
-      <div class="card-group" data-aos="fade-up"data-aos-duration="3000">
-        <div class="card">
-          <img src="./assets/img/smartphone.jpg" class="card-img-top rounded" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Seguro Smartphone</h5>
-            <p class="card-text">Cuida tu SmartPhone para que todo funcione ok. Aprovechalo ahora.</p>
-            <a href="#" class="btn btn-primary">¡LO QUIERO!</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./assets/img/incendio.jpg" class="card-img-top rounded" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Seguro de incendio</h5>
-            <p class="card-text">Cuida todo el contenido de tu casa. Aprovechalo ahora</p>
-            <a href="#" class="btn btn-primary">¡LO QUIERO!</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="./assets/img/adulto.jpg" class="card-img-top rounded" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Seguro de retiro</h5>
-            <p class="card-text">Asegurate de un buen retiro con este seguro. Aprovechalo ahora.</p>
-            <a href="#" class="btn btn-primary">¡LO QUIERO!</a>
-          </div>
-        </div>
-      </div>
-     </section>
+<section  class="cards__seguros container pb-5"></section>
+  <ul id="listadoSeguros"></ul>
+
+
 <!-- Cards End-->
+</main>
 <!-- Main End-->
-    </main>
 <!-- Footer Start-->
     <footer>
       <div class="container">
         <a href="./index.html">
           <img src="./assets/img/logo footer.svg" alt="logo footer">
         </a>
-        
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="./index.html">HOME</a>
             </li>
           </ul>
-        
       </div>
     </footer>
 <!-- Footer End-->

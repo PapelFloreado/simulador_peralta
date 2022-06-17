@@ -70,9 +70,9 @@ main {
     main div img {
       filter: contrast(75%);
       opacity: 0.9; }
-  main section {
+  main section.wasp {
     background-color: #01003a; }
-    main section article a img.wasp {
+    main section.wasp article a img.wasp {
       width: 25%;
       filter: contrast(75%);
       padding: 3rem 0; }
@@ -127,4 +127,8 @@ section.cards__seguros {
     margin: 1rem;
     border: none; }
     section.cards__seguros .card-group .card img .card-img-top {
+      width: 25%;
       border-radius: 1rem 1 rem 0 0; }
+
+img.market {
+  width: 7%; }

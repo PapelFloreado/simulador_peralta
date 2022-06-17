@@ -23,7 +23,7 @@ main {
             opacity: 0.9;
         }
     }
-    section {
+    section.wasp {
         background-color: rgb(1, 0, 58);
         article {
             a {
@@ -111,6 +111,7 @@ section.cards__seguros {
         
         .card {
             img .card-img-top {
+                width: 25%;
                 border-radius: 1rem 1 rem 0 0;
             }
 
@@ -119,3 +120,7 @@ section.cards__seguros {
         }
     }
 }
+img.market { 
+    width: 7%;
+}
+
