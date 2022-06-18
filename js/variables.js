@@ -3,3 +3,4 @@ const precio = 250
 const sinAlarma = 1.10
 const conAlarma = 0
 
+

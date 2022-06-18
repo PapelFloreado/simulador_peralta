@@ -49,7 +49,7 @@ const carrito = []
 
 
 function creoID() {
-    return parseInt(Math.random() * 10000)
+    return parseInt(Math.random() * 1000)
 }
 
 /* const total = carrito.reduce() */

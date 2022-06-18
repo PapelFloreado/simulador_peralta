@@ -7,8 +7,8 @@ let submit = document.addEventListener("submit", cotizador)
 const listadoCarrito = document.getElementById("listadoCarrito")
 const mouse = document.querySelector("#final")
 const listadoSeguros = document.getElementById("listadoSeguros") 
-const btnCarrito = document.getElementById("btnCarrito")
 const pagarCarrito = document.getElementById("pagarCarrito")
+
 
 
 // COTIZADOR SEGURO PERSONALIZADO
@@ -179,8 +179,9 @@ const cargarSeguros = (elemento)=> {
     listadoSeguros.innerHTML = ""
     for (elemento of seguros) {
         
-        const liSeguros = document.createElement("div")        
-                liSeguros.innerHTML = 
+        const divSeguros = document.createElement("li") 
+        divSeguros.className = "list-group-item"       
+                divSeguros.innerHTML = 
                 `<div class="container card mb-5 border-0" style="max-width: 840px;">
                 <div class="row g-0">
                   <div class="col-md-4">
@@ -193,16 +194,34 @@ const cargarSeguros = (elemento)=> {
                       <p id="precio" class="card-text precio fs-4 text">Precio sin impuestos: $${elemento.importe}  </p>
                       <p id="precioFinal" class="card-text precioFinal fs-4 text">Precio Final: $${elemento.valorFinal}</p>
                     </div>
-                    <button type="button" class="btn ms-2 btnCarrito btn-primary">Agregar al Carrito</button>
-                  </div>
-                </div>
-              </div>`
-                liSeguros.addEventListener("click", ()=> {
-                    agregarAlCarrito(liSeguros.innerText)
-                })
-                listadoSeguros.append(liSeguros)
-            }
+                    <button id="boton "  ${elemento.valorFinal} type="button" class="btn ms-2  btn-primary">Agregar al Carrito</button>
+                    </div>
+                    </div>
+                    </div>`
+                                       
+
+                    listadoSeguros.appendChild(divSeguros)
+
+                    divSeguros.addEventListener("click", (divSeguros)=> {          
+                        carrito.push(elemento)
+                                                    
+                    })
+                    divSeguros.addEventListener("click",(seguros)=> {                 
+                        const liCarrito = document.createElement("li")
+                              liCarrito.innerText = elemento.tipo + `${elemento.valorFinal}`
+                              liCarrito.className = "list-group-item"
+                              listadoCarrito.appendChild(liCarrito)
+                            }) 
+                
+            }         
         }
+
+       
+cargarSeguros()
+        
+        
+
+
         
 
         
@@ -213,6 +232,7 @@ if (elemento > "") {
     const tipo = elemento + "enCarrito"
     const liCarrito = document.createElement("li")
             liCarrito.id = id
+            liCarrito.className = "list-group-item"
             liCarrito.innerText = elemento           
             liCarrito.tipo = tipo
             liCarrito.addEventListener("dblclick", ()=> {
@@ -230,8 +250,6 @@ const eliminarDelCarrito = (id)=> { //Usen el DEBUGGER para seguir el código pa
               return
     }
 }
-
-cargarSeguros()
 
 /* const total = (elemento)=> {
     listadoCarrito.innerHTML = ""
