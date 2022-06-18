@@ -4,10 +4,13 @@ let metros2 = document.getElementById("metros2")
 let flexRadioDefault1 = document.getElementById("flexRadioDefault1")
 let padre = document.getElementById("cotizacion");
 let submit = document.addEventListener("submit", cotizador)
-const listadoCarrito = document.getElementById("listadoCarrito")
 const mouse = document.querySelector("#final")
-const listadoSeguros = document.getElementById("listadoSeguros") 
 const pagarCarrito = document.getElementById("pagarCarrito")
+const precioTotal = document.getElementById('precioTotal');
+const listadoSeguros = document.getElementById("listadoSeguros") 
+const listadoCarrito = document.getElementById("listadoCarrito")
+
+
 
 
 
@@ -39,26 +42,7 @@ function cotizador(e){
         cotizacion.addEventListener("click", (cotizacion)=> {          
             cotizado.push ( new Cotizacion)
             
-        })
-        cotizacion.addEventListener("click",(cotizacion)=> {                 
-                const liCarrito = document.createElement("li")
-                      liCarrito.id = id
-                      liCarrito.innerText = "Su Cotizacion es de $" + resultado + "," + "ID: " + id
-                      liCarrito.className = "list-group-item"
-                      liCarrito.addEventListener("dblclick", ()=> {
-                        eliminarDelCarrito(`${id}`)
-                    })
-                      listadoCarrito.append(liCarrito)
-                    })
-                    
-        cotizacion.addEventListener("mousemove",()=>{
-            final.title = "Agregar al carrito"
-        })
-        padre.appendChild(cotizacion)
-        
-        return cotizacion
-        
-        
+        })    
     }else if ( select.value == "val1" && flexRadioDefault1.checked == true ) {
         let id = creoID()
         let resultado = (metros2.value * precio * IVA).toFixed(2)
@@ -95,7 +79,6 @@ function cotizador(e){
         padre.appendChild(cotizacion)
 
         return cotizacion
-        
     }else if ( select.value == "val1" && flexRadioDefault1.checked == false  ){
         let id = creoID()
         let resultado = (metros2.value * precio).toFixed(2)
@@ -131,6 +114,9 @@ function cotizador(e){
         padre.appendChild(cotizacion)
 
         return cotizacion
+
+
+
 
     }else if ( select.value == "val2" && flexRadioDefault1.checked == false ) {
         let id = creoID()
@@ -172,113 +158,63 @@ function cotizador(e){
 }
 
 
+mostrarSeguros(seguros)
 
-
-const cargarSeguros = (elemento)=> { 
-    
+function mostrarSeguros(array) {
     listadoSeguros.innerHTML = ""
-    for (elemento of seguros) {
-        
-        const divSeguros = document.createElement("li") 
-        divSeguros.className = "list-group-item"       
-                divSeguros.innerHTML = 
-                `<div class="container card mb-5 border-0" style="max-width: 840px;">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img src="${elemento.img}" class="img-fluid rounded-start" alt="...">
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title fs-2 text">${elemento.tipo}</h5>
-                      <p class="card-text fs-4 text">${elemento.description} </p>
-                      <p id="precio" class="card-text precio fs-4 text">Precio sin impuestos: $${elemento.importe}  </p>
-                      <p id="precioFinal" class="card-text precioFinal fs-4 text">Precio Final: $${elemento.valorFinal}</p>
-                    </div>
-                    <button id="boton "  ${elemento.valorFinal} type="button" class="btn ms-2  btn-primary">Agregar al Carrito</button>
-                    </div>
-                    </div>
-                    </div>`
-                                       
-
-                    listadoSeguros.appendChild(divSeguros)
-
-                    divSeguros.addEventListener("click", (divSeguros)=> {          
-                        carrito.push(elemento)
-                                                    
-                    })
-                    divSeguros.addEventListener("click",(seguros)=> {                 
-                        const liCarrito = document.createElement("li")
-                              liCarrito.innerText = elemento.tipo + `${elemento.valorFinal}`
-                              liCarrito.className = "list-group-item"
-                              listadoCarrito.appendChild(liCarrito)
-                            }) 
-                
-            }         
-        }
-
-       
-cargarSeguros()
-        
-        
-
-
-        
-
-        
-const agregarAlCarrito = (elemento)=> { 
     
-if (elemento > "") {
-    const id = elemento + "enCarrito" 
-    const tipo = elemento + "enCarrito"
-    const liCarrito = document.createElement("li")
-            liCarrito.id = id
-            liCarrito.className = "list-group-item"
-            liCarrito.innerText = elemento           
-            liCarrito.tipo = tipo
-            liCarrito.addEventListener("dblclick", ()=> {
-                eliminarDelCarrito(`${id}`)
-            })
-            listadoCarrito.append(liCarrito)
-    }
-}
-
-const eliminarDelCarrito = (id)=> { //Usen el DEBUGGER para seguir el código paso a paso
-    if (confirm("¿Desea eliminar el producto del carrito?")) {
-        const itemAeliminar = document.getElementById(id)
-       
-              itemAeliminar.remove()
-              return
-    }
-}
-
-/* const total = (elemento)=> {
-    listadoCarrito.innerHTML = ""
-    for (elemento of carrito) {
-        const final = document.createElement("div")
-
-        final.innerHTML = `<!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
+    array.forEach (el =>{
+        let div = document.createElement("div")
+        div.innerHTML = `<div class="container card mb-5 border-0" style="max-width: 840px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="${el.img}" class="img-fluid rounded-start" alt="...">
           </div>
-        </div>`
-        final.addEventListener("click",()=>{
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title fs-2 text">${el.tipo}</h5>
+              <p class="card-text fs-4 text">${el.description} </p>
+              <p id="precio" class="card-text precio fs-4 text">Precio sin impuestos: $${el.importe}  </p>
+              <p id="precioFinal" class="card-text precioFinal fs-4 text">Precio Final: $${el.valorFinal}</p>
+              <p id="id" class="card-text fs-4 text">ID:${el.id}</p>    
+            </div>
+            <button id="boton${el.id}" type="button" class="btn ms-2 btn-primary">Agregar al Carrito</button>
+            </div>
+            </div>
+            </div>`
+        listadoSeguros.appendChild(div)
+        let btnAgregar = document.getElementById(`boton${el.id}`)
+        btnAgregar.addEventListener('click',()=>{
+            agregarAlCarrito(el.id);
+        })
+    })
+}
 
-        }) 
+function agregarAlCarrito(id) {
+    let productoAgregar = seguros.find(obj=> obj.id === id)
+    carrito.push(productoAgregar)
+    mostrarCarrito(productoAgregar)
+    actualizarCarrito()
+}
 
-    }
+function mostrarCarrito(productoAgregar) {
 
-
-} */
+    let div = document.createElement('div')
+     div.innerHTML=` <p>${productoAgregar.tipo}</p>
+                     <p>Precio Final: $${productoAgregar.valorFinal}</p>
+                     <button id="eliminar${productoAgregar.id}" class="btn btn-primary" type="submit">Eliminar del carrito</button>`
+     listadoCarrito.appendChild(div)
+ 
+     let btnEliminar = document.getElementById(`eliminar${productoAgregar.id}`)
+     btnEliminar.addEventListener('click',()=>{
+         btnEliminar.parentElement.remove()
+         carrito = carrito.filter(el => el.id !== productoAgregar.id)
+         actualizarCarrito()
+         console.log(carrito);
+     })
+ }
+ 
+ function actualizarCarrito (){
+    precioTotal.innerText = carrito.length
+    precioTotal.innerText = carrito.reduce((acc,el,cotizado)=> acc + el.valorFinal + cotizado, 0 )       
+}                                                          

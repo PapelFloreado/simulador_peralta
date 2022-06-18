@@ -45,13 +45,12 @@ function buscarProducto() {
     }
 }
 
-const carrito = []
+let carrito = []
 
 
 function creoID() {
-    return parseInt(Math.random() * 1000)
+    return parseInt(Math.random() * 10000)
 }
 
-/* const total = carrito.reduce() */
 
 
