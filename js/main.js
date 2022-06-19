@@ -195,7 +195,7 @@ function agregarAlCarrito(id) {
     carrito.push(productoAgregar)
     mostrarCarrito(productoAgregar)
     actualizarCarrito()
-}
+}   
 
 function mostrarCarrito(productoAgregar) {
 
@@ -216,5 +216,5 @@ function mostrarCarrito(productoAgregar) {
  
  function actualizarCarrito (){
     precioTotal.innerText = carrito.length
-    precioTotal.innerText = carrito.reduce((acc,el,cotizado)=> acc + el.valorFinal + cotizado, 0 )       
+    precioTotal.innerText = carrito.reduce((acc,el)=> acc + el.valorFinal, 0 )       
 }                                                          
