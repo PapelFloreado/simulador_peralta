@@ -17,6 +17,13 @@ const listadoCarrito = document.getElementById("listadoCarrito")
 // COTIZADOR SEGURO PERSONALIZADO
 
 const cotizado = [] 
+const eliminarDelCarrito = (productoID)=> {
+    if (confirm("¿Desea eliminar el producto del carrito?")) {
+        const itemAeliminar = document.getElementById(productoID)
+              itemAeliminar.remove()
+              return
+    }
+}
 
 
 function cotizador(e){
@@ -42,7 +49,27 @@ function cotizador(e){
         cotizacion.addEventListener("click", (cotizacion)=> {          
             cotizado.push ( new Cotizacion)
             
-        })    
+        })
+        cotizacion.addEventListener("click",(cotizacion)=> {                 
+            const liCarrito = document.createElement("li")
+                  liCarrito.id = id
+                  liCarrito.innerText = "Su Cotizacion es de $" + resultado + "," + "ID: " + id
+                  liCarrito.className = "list-group-item"
+                  liCarrito.addEventListener("dblclick", ()=> {
+                    eliminarDelCarrito(`${id}`)
+                })
+
+                  
+                  listadoCarrito.append(liCarrito)
+        })
+        
+        cotizacion.addEventListener("mousemove",()=>{
+            final.title = "Agregar al carrito"
+        })
+        padre.appendChild(cotizacion)
+
+        return cotizacion
+
     }else if ( select.value == "val1" && flexRadioDefault1.checked == true ) {
         let id = creoID()
         let resultado = (metros2.value * precio * IVA).toFixed(2)
@@ -152,6 +179,7 @@ function cotizador(e){
         })
         padre.appendChild(cotizacion)
         return cotizacion
+
     
     }
 
