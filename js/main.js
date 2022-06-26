@@ -70,7 +70,7 @@ function cotizador(e){
         class Cotizacion {
             constructor (cotizacion) {
                 this.tipo = tipo
-                this.resultado = resultado
+                this.valorFinal = resultado
                 this.id = creoID()
             }
         }
@@ -94,7 +94,7 @@ function cotizador(e){
         class Cotizacion {
             constructor (cotizacion) {
                 this.tipo = tipo
-                this.resultado = resultado
+                this.valorFinal = resultado
                 this.id = creoID()
             }
         }
@@ -118,7 +118,7 @@ function cotizador(e){
         class Cotizacion {
             constructor (cotizacion) {
                 this.tipo = tipo
-                this.resultado = resultado
+                this.valorFinal = resultado
                 this.id = creoID()
             }
         }
