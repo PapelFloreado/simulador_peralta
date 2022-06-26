@@ -10,6 +10,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script defer src="./js/variables.js"></script>
     <script defer src="./js/objetos.js"></script>
+    <script defer src="./js/datosUsuario.js"></script>
     <script defer src="./js/main.js"></script>
     <title>Simulador de Seguros</title>
 </head>
@@ -114,7 +115,7 @@
 <!-- CheckOut Start-->
 <section class=" fixed-bottom mb-4 ms-3">
   <div class="carrito flex-row  ">
-    <img class="container  align-items-end justify-content-start market btn " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" src="./assets/img/cart.png" alt="">
+    <img class="container  align-items-end justify-content-start market btn " data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" src="./assets/img/cart.svg" alt="">
   </div>
         <div class="offcanvas offcanvas-end " tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
           <div class="offcanvas-header">
@@ -123,11 +124,55 @@
           </div>
           <div class="offcanvas-body">
             <div id="listadoCarrito" class="list-group list-group-flush">
-              <p class="precioProducto">Precio total: $<span id="precioTotal">0</span></p>
             </div>
+            <p class="precioProducto border-top mt-3 pt-3">Precio total: $<span id="precioTotal">0</span></p>
+            <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Pagar Carrito
+              </button>
           </div>
         </div>
 </section>
+<!-- Modal -->
+<div class="modal fade col-6" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="staticBackdropLabel">Completa Tus Datos de Contacto</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="datosUsuario" class="form__checkout" action="">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Nombre" value="">
+          </div>
+          <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="apellido" placeholder="Apellido" value="">
+          </div>
+  
+          <label for="" class="form-label">Coloque su email</label>
+            <div class="input-group mb-3">
+              <input id="emailUser" type="text" class="form-control" placeholder="Coloque su Email" aria-label="Username" value="">
+              <span class="input-group-text">@</span>
+              <input id="emailHost" type="text" class="form-control" placeholder="Gmail, Yahoo, Outlook, etc..." aria-label="Server" value="">
+            </div>
+            <input id="submit" class="btn btn-primary" type="submit" value="Enviar Datos">
+            <input id="recuperarCarrito" class="btn btn-primary" type="button" value="Mostrar Mi Pedido">
+          </form>
+        </div>
+      <div class="modal-footer">
+        <div>
+          <div id="miCarrito">
+            
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
 <!-- CheckOut End-->
 <!-- Cards Start-->
 <section  class="cards__seguros container pb-5">

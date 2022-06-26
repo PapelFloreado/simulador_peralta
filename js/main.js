@@ -17,6 +17,7 @@ const listadoCarrito = document.getElementById("listadoCarrito")
 // COTIZADOR SEGURO PERSONALIZADO
 
 const cotizado = [] 
+
 const eliminarDelCarrito = (productoID)=> {
     if (confirm("¿Desea eliminar el producto del carrito?")) {
         const itemAeliminar = document.getElementById(productoID)
@@ -35,154 +36,101 @@ function cotizador(e){
     
     if ( select.value == "val2" && flexRadioDefault1.checked == true){
         let id = creoID()
-        let resultado = (metros2.value * precio * IVA * sinAlarma).toFixed(2)
+        let tipo = "Seguro Personalizado"
+        let resultado = parseFloat(metros2.value * precio * IVA * sinAlarma).toFixed(2)
         let cotizacion = document.createElement("div")
-        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado} ID:${id} </h2>`
+        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado} ID:${id} </h2>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
 
         class Cotizacion {
             constructor (cotizacion) {
-                this.cotizacion = cotizacion
-                this.resultado = resultado
+                this.tipo = tipo
+                this.valorFinal = resultado
                 this.id = creoID()
             }
         }
         cotizacion.addEventListener("click", (cotizacion)=> {          
             cotizado.push ( new Cotizacion)
+            carrito.push(new Cotizacion)
             
         })
-        cotizacion.addEventListener("click",(cotizacion)=> {                 
-            const liCarrito = document.createElement("li")
-                  liCarrito.id = id
-                  liCarrito.innerText = "Su Cotizacion es de $" + resultado + "," + "ID: " + id
-                  liCarrito.className = "list-group-item"
-                  liCarrito.addEventListener("dblclick", ()=> {
-                    eliminarDelCarrito(`${id}`)
-                })
-
-                  
-                  listadoCarrito.append(liCarrito)
-        })
         
-        cotizacion.addEventListener("mousemove",()=>{
-            final.title = "Agregar al carrito"
-        })
         padre.appendChild(cotizacion)
 
         return cotizacion
 
     }else if ( select.value == "val1" && flexRadioDefault1.checked == true ) {
         let id = creoID()
+        let tipo = "Seguro Personalizado"
         let resultado = (metros2.value * precio * IVA).toFixed(2)
         let cotizacion = document.createElement("div")
-        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado} ID:${id} </h2>`
+        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado} ID:${id} </h2>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
 
         class Cotizacion {
             constructor (cotizacion) {
-                this.cotizacion = cotizacion
+                this.tipo = tipo
                 this.resultado = resultado
                 this.id = creoID()
             }
         }
         cotizacion.addEventListener("click", (cotizacion)=> {          
             cotizado.push ( new Cotizacion)
-                                        
+            carrito.push(new Cotizacion)                            
         })
-        cotizacion.addEventListener("click",(cotizacion)=> {                 
-            const liCarrito = document.createElement("li")
-                  liCarrito.id = id
-                  liCarrito.innerText = "Su Cotizacion es de $" + resultado + "," + "ID: " + id
-                  liCarrito.className = "list-group-item"
-                  liCarrito.addEventListener("dblclick", ()=> {
-                    eliminarDelCarrito(`${id}`)
-                })
-
-                  
-                  listadoCarrito.append(liCarrito)
-        })
-        
-        cotizacion.addEventListener("mousemove",()=>{
-            final.title = "Agregar al carrito"
-        })
+       
         padre.appendChild(cotizacion)
 
         return cotizacion
+
     }else if ( select.value == "val1" && flexRadioDefault1.checked == false  ){
         let id = creoID()
+        let tipo = "Seguro Personalizado"
         let resultado = (metros2.value * precio).toFixed(2)
         let cotizacion = document.createElement("div")
-        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado} ID:${id} </h2>`
+        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado} ID:${id} </h2>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
 
         class Cotizacion {
             constructor (cotizacion) {
-                this.cotizacion = cotizacion
+                this.tipo = tipo
                 this.resultado = resultado
                 this.id = creoID()
             }
         }
         cotizacion.addEventListener("click", (cotizacion)=> {          
             cotizado.push ( new Cotizacion)
-                                        
+            carrito.push(new Cotizacion)                            
         })
-        cotizacion.addEventListener("click",(cotizacion)=> {                 
-            const liCarrito = document.createElement("li")
-                  liCarrito.id = id
-                  liCarrito.innerText = "Su Cotizacion es de $" + resultado + "," + "ID: " + id
-                  liCarrito.className = "list-group-item"
-                  liCarrito.addEventListener("dblclick", ()=> {
-                    eliminarDelCarrito(`${id}`)
-                })
 
-                  
-                  listadoCarrito.append(liCarrito)
-        })
-        cotizacion.addEventListener("mousemove",()=>{
-            final.title = "Agregar al carrito"
-        })                             
         padre.appendChild(cotizacion)
 
         return cotizacion
-
-
-
 
     }else if ( select.value == "val2" && flexRadioDefault1.checked == false ) {
         let id = creoID()
+        let tipo = "Seguro Personalizado"
         let resultado = (metros2.value * precio * sinAlarma).toFixed(2)
         let cotizacion = document.createElement("div")
-        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado} ID:${id} </h2>`
+        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado} ID:${id} </h2>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
 
         class Cotizacion {
             constructor (cotizacion) {
-                this.cotizacion = cotizacion
+                this.tipo = tipo
                 this.resultado = resultado
                 this.id = creoID()
             }
         }
         cotizacion.addEventListener("click", (cotizacion)=> {          
             cotizado.push ( new Cotizacion)
-                                        
+            carrito.push(new Cotizacion)                            
         })
-        cotizacion.addEventListener("click",(cotizacion)=> {                 
-            const liCarrito = document.createElement("li")
-                  liCarrito.id = id
-                  liCarrito.innerText = "Su Cotizacion es de $" + resultado + "," + "ID: " + id
-                  liCarrito.className = "list-group-item"
-                  liCarrito.addEventListener("dblclick", ()=> {
-                    eliminarDelCarrito(`${id}`)
-                })
-
-                  
-                  listadoCarrito.append(liCarrito)
-        })
-        cotizacion.addEventListener("mousemove",()=>{
-            final.title = "Agregar al carrito"
-        })
+        
         padre.appendChild(cotizacion)
+
         return cotizacion
-
-    
     }
-
 }
 
 
@@ -198,13 +146,13 @@ function mostrarSeguros(array) {
           <div class="col-md-4">
             <img src="${el.img}" class="img-fluid rounded-start" alt="...">
           </div>
-          <div class="col-md-8">
+          <div class="col-md-6">
             <div class="card-body">
               <h5 class="card-title fs-2 text">${el.tipo}</h5>
               <p class="card-text fs-4 text">${el.description} </p>
-              <p id="precio" class="card-text precio fs-4 text">Precio sin impuestos: $${el.importe}  </p>
-              <p id="precioFinal" class="card-text precioFinal fs-4 text">Precio Final: $${el.valorFinal}</p>
-              <p id="id" class="card-text fs-4 text">ID:${el.id}</p>    
+              <p id="precio" class="card-text precio fs-6 text">Precio sin impuestos: $${el.importe}  </p>
+              <p id="precioFinal" class="card-text precioFinal fs-6 text">Precio Final: $${el.valorFinal}</p>
+              <p id="id" class="card-text fs-6 text">ID:${el.id}</p>    
             </div>
             <button id="boton${el.id}" type="button" class="btn ms-2 btn-primary">Agregar al Carrito</button>
             </div>
@@ -244,5 +192,6 @@ function mostrarCarrito(productoAgregar) {
  
  function actualizarCarrito (){
     precioTotal.innerText = carrito.length
-    precioTotal.innerText = carrito.reduce((acc,el)=> acc + el.valorFinal, 0 )       
+    precioTotal.innerText = carrito.reduce((acc,el)=> acc + el.valorFinal, 0 )   
+
 }                                                          
