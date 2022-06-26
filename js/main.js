@@ -62,7 +62,7 @@ function cotizador(e){
     }else if ( select.value == "val1" && flexRadioDefault1.checked == true ) {
         let id = creoID()
         let tipo = "Seguro Personalizado"
-        let resultado = (metros2.value * precio * IVA).toFixed(2)
+        let resultado = parseFloat(metros2.value * precio * IVA).toFixed(2)
         let cotizacion = document.createElement("div")
         cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado} ID:${id} </h2>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
@@ -86,7 +86,7 @@ function cotizador(e){
     }else if ( select.value == "val1" && flexRadioDefault1.checked == false  ){
         let id = creoID()
         let tipo = "Seguro Personalizado"
-        let resultado = (metros2.value * precio).toFixed(2)
+        let resultado = parseFloat(metros2.value * precio).toFixed(2)
         let cotizacion = document.createElement("div")
         cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado} ID:${id} </h2>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
@@ -110,7 +110,7 @@ function cotizador(e){
     }else if ( select.value == "val2" && flexRadioDefault1.checked == false ) {
         let id = creoID()
         let tipo = "Seguro Personalizado"
-        let resultado = (metros2.value * precio * sinAlarma).toFixed(2)
+        let resultado = parseFloat(metros2.value * precio * sinAlarma).toFixed(2)
         let cotizacion = document.createElement("div")
         cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado} ID:${id} </h2>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
