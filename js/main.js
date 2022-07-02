@@ -1,30 +1,21 @@
 
-let select = document.getElementById("select")
-let metros2 = document.getElementById("metros2")
-let flexRadioDefault1 = document.getElementById("flexRadioDefault1")
-let padre = document.getElementById("cotizacion");
-let submit = document.addEventListener("submit", cotizador)
+const select = document.getElementById("select")
+const metros2 = document.getElementById("metros2")
+const flexRadioDefault1 = document.getElementById("flexRadioDefault1")
+const padre = document.getElementById("cotizacion");
+const submit = document.addEventListener("submit", cotizador)
 const mouse = document.querySelector("#final")
 const pagarCarrito = document.getElementById("pagarCarrito")
 const precioTotal = document.getElementById('precioTotal');
 const listadoSeguros = document.getElementById("listadoSeguros") 
 const listadoCarrito = document.getElementById("listadoCarrito")
-
-
-
+const vaciarCarrito = document.getElementById("vaciarCarrito")
 
 
 // COTIZADOR SEGURO PERSONALIZADO
 
 const cotizado = [] 
 
-const eliminarDelCarrito = (productoID)=> {
-    if (confirm("¿Desea eliminar el producto del carrito?")) {
-        const itemAeliminar = document.getElementById(productoID)
-              itemAeliminar.remove()
-              return
-    }
-}
 
 
 function cotizador(e){
@@ -134,64 +125,77 @@ function cotizador(e){
 }
 
 
-mostrarSeguros(seguros)
+/* mostrarSeguros(seguros)
 
 function mostrarSeguros(array) {
     listadoSeguros.innerHTML = ""
     
     array.forEach (el =>{
+        const {img, tipo, description, importe, valorFinal, id} = el
         let div = document.createElement("div")
         div.innerHTML = `<div class="container card mb-5 border-0" style="max-width: 840px;">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="${el.img}" class="img-fluid rounded-start" alt="...">
+            <img src="${img}" class="img-fluid rounded-start" alt="...">
           </div>
           <div class="col-md-6">
             <div class="card-body">
-              <h5 class="card-title fs-2 text">${el.tipo}</h5>
-              <p class="card-text fs-4 text">${el.description} </p>
-              <p id="precio" class="card-text precio fs-6 text">Precio sin impuestos: $${el.importe}  </p>
-              <p id="precioFinal" class="card-text precioFinal fs-6 text">Precio Final: $${el.valorFinal}</p>
-              <p id="id" class="card-text fs-6 text">ID:${el.id}</p>    
+              <h5 class="card-title fs-2 text">${tipo}</h5>
+              <p class="card-text fs-4 text">${description} </p>
+              <p id="precio" class="card-text precio fs-6 text">Precio sin impuestos: $${importe}  </p>
+              <p id="precioFinal" class="card-text precioFinal fs-6 text">Precio Final: $${valorFinal}</p>  
             </div>
-            <button id="boton${el.id}" type="button" class="btn ms-2 btn-primary">Agregar al Carrito</button>
+            <button id="boton${id}" type="button" class="btn ms-2 btn-primary">Agregar al Carrito</button>
             </div>
             </div>
             </div>`
         listadoSeguros.appendChild(div)
-        let btnAgregar = document.getElementById(`boton${el.id}`)
+        let btnAgregar = document.getElementById(`boton${id}`)
         btnAgregar.addEventListener('click',()=>{
-            agregarAlCarrito(el.id);
+            agregarAlCarrito(el.id)
         })
     })
 }
 
-function agregarAlCarrito(id) {
-    let productoAgregar = seguros.find(obj=> obj.id === id)
-    carrito.push(productoAgregar)
-    mostrarCarrito(productoAgregar)
-    actualizarCarrito()
-}   
+const agregarAlCarrito = (produId)=>{
+    const productoDuplicado = carrito.some(segu => segu.id === produId)
+    if (productoDuplicado) {
+        const seguro = carrito.map (segu=> {
+            if(segu.id === produId){
+                segu.cantidad++
+            }
+        })
+    }else {
+        const item = seguros.find((segu)=>segu.id == produId)
+        carrito.push(item)
+        console.log(carrito)
+    }
+    actualizarCarro()
+}                                         
 
-function mostrarCarrito(productoAgregar) {
+const actualizarCarro = () =>{
+    listadoCarrito.innerHTML = ""
+    carrito.forEach((segu)=>{
+        const div = document.createElement("div")
+        div.innerHTML = `
+        <p>${segu.tipo}</p>
+        <p>Precio Final: $${segu.valorFinal}</p>
+        <p>Cantidad: <span id="cantidad-prod">${segu.cantidad}</p>
+        <button onclick="eliminarDelCarrito(${segu.id})" class="btn btn-primary" type="submit">Eliminar del carrito</button>
+        `
+        listadoCarrito.appendChild(div)
+    })
+    precioTotal.innerText = carrito.reduce((acc, segu)=> acc + segu.valorFinal * segu.cantidad, 0)
+}
 
-    let div = document.createElement('div')
-     div.innerHTML=` <p>${productoAgregar.tipo}</p>
-                     <p>Precio Final: $${productoAgregar.valorFinal}</p>
-                     <button id="eliminar${productoAgregar.id}" class="btn btn-primary" type="submit">Eliminar del carrito</button>`
-     listadoCarrito.appendChild(div)
- 
-     let btnEliminar = document.getElementById(`eliminar${productoAgregar.id}`)
-     btnEliminar.addEventListener('click',()=>{
-         btnEliminar.parentElement.remove()
-         carrito = carrito.filter(el => el.id !== productoAgregar.id)
-         actualizarCarrito()
-         console.log(carrito);
-     })
- }
- 
- function actualizarCarrito (){
-    precioTotal.innerText = carrito.length
-    precioTotal.innerText = carrito.reduce((acc,el)=> acc + el.valorFinal, 0 )   
+const eliminarDelCarrito = (produId) => {
+    const item = carrito.find ((segu)=> segu.id === produId)
+    const indice = carrito.indexOf(item)
+    carrito.splice(indice, 1)
+    actualizarCarro()
+}
 
-}                                                          
+vaciarCarrito.addEventListener("click", ()=>{
+    carrito.length = 0
+    actualizarCarro()
+}) */

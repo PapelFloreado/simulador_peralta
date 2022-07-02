@@ -81,7 +81,7 @@ div.cotiza {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "img1 text1" "img1 text2" "img1 text3";
-  background-image: url("../../simulador_Peralta/assets/img/img4.jpg");
+  background-image: url("../../assets/img/img4.jpg");
   background-size: cover;
   backdrop-filter: blur(50px);
   padding: 3rem; }

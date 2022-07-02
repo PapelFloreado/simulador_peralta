@@ -6,6 +6,8 @@ const btnEnviar = document.querySelector("#submit")
 const recuperarCarrito = document.querySelector("#recuperarCarrito")
 const miCarrito = document.querySelector("#miCarrito")
 
+
+
 function guardarDatosUser () {
     const datosUser = {nombre: nombre.value,
                        apellido: apellido.value,
@@ -19,9 +21,16 @@ function guardarDatosUser () {
 
 btnEnviar.addEventListener("click", (e)=>{
     e.preventDefault()
-    guardarDatosUser()
-    guardarCarrito()
-    alert("Envio en proceso!")
+    nombre.value, apellido.value, emailUser.value, emailHost.value === "" ? Swal.fire({
+        icon: 'error',
+        title: 'oh No!',
+        text: 'Parece que faltan algunos datos',
+      }) : (guardarCarrito(), guardarDatosUser(), Swal.fire({
+        icon: 'success',
+        title: 'Genial!',
+        text: 'Tus datos fueron enviados',
+      }))
+    
 })
 
 function guardarCarrito(){
@@ -29,17 +38,27 @@ function guardarCarrito(){
     localStorage.setItem("carrito", carrito)
 }
 
+
+
 recuperarCarrito.addEventListener("click", (e)=>{
     e.preventDefault()
-    recuperarPedido()
+    carrito.length === 0 ? Swal.fire({
+        icon: 'error',
+        title: 'Aquí no hay nada',
+        text: 'Tu carrito todavía está vacio',
+      }) : recuperarPedido()
+    
 })
 
 
 function recuperarPedido() {
-    let carrito = JSON.parse(localStorage.getItem("carrito"))
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || []
       let item = ""
           for (el of carrito) {
               item += `<h3>${el.tipo} - $${el.valorFinal}</h3>`
           }
           miCarrito.innerHTML = item
 }
+
+
+    
