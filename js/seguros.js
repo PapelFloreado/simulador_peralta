@@ -1,5 +1,5 @@
 
-mostrarSeguros(seguros)
+
 
 function mostrarSeguros(array) {
     listadoSeguros.innerHTML = ""
@@ -61,6 +61,7 @@ const actualizarCarro = () =>{
         listadoCarrito.appendChild(div)
     })
     precioTotal.innerText = carrito.reduce((acc, segu)=> acc + segu.valorFinal * segu.cantidad, 0)
+    
 }
 
 const eliminarDelCarrito = (produId) => {
@@ -72,5 +73,6 @@ const eliminarDelCarrito = (produId) => {
 
 vaciarCarrito.addEventListener("click", ()=>{
     carrito.length = 0
+    precioTotal.innerText = 0
     actualizarCarro()
 })

@@ -1,0 +1,51 @@
+[
+    {
+        "cantidad": 1,
+        "img": "assets/img/familia.jpg",
+        "tipo": "Seguro Paquete Completo",
+        "importe": 22500,
+        "description": "Este seguro cuida a lo que mas queres. Aprovechalo ahora."      
+
+    },
+    {
+        "cantidad": 1,
+        "img": "assets/img/hogar.jpg",
+        "tipo": "Seguro Solo Hogar",
+        "importe": 15500,
+        "description": "Este seguro cuida tu casa. Aprovechalo ahora." 
+        
+    },
+    {
+        "cantidad": 1,
+        "img": "assets/img/auto1.jpg",
+        "tipo": "Seguro Solo vehiculo",
+        "importe": 9500,
+        "description": "Cuida tu vehículo para que te lleve donde quieras. Aprovechalo ahora." 
+        
+    },
+    {
+        "cantidad": 1,
+        "img": "assets/img/smartphone.jpg",
+        "tipo": "Seguro Smartphone",
+        "importe": 5000,
+        "description": "Cuida tu SmartPhone para que todo funcione ok. Aprovechalo ahora."     
+
+    },
+    {
+        "cantidad": 1,
+        "img": "assets/img/incendio.jpg",
+        "tipo": "Seguro Incendio",
+        "importe": 12000,
+        "description": "Cuida todo el contenido de tu casa. Aprovechalo ahora."     
+
+    },
+    {
+        "cantidad": 1,
+        "img": "assets/img/adulto.jpg",
+        "tipo": "Seguro Retiro",
+        "importe": 19000,
+        "description": "Asegurate de un buen retiro con este seguro. Aprovechalo ahora." 
+        
+    }
+
+]

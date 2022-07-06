@@ -128,3 +128,32 @@ form.form__checkout {
     margin:0;
     padding: 0;
 }
+
+@media screen and  (max-width: 720px) {
+main {
+    h1 {
+        font-size: 3em;
+        text-align: center;
+
+    }
+    div.cotiza .text1 {
+        font-size: 1.5em;
+    }
+    div.cotiza .text2{
+        font-size: 1.5em;
+    }
+    div.cotiza .text3 {
+        font-size: 1.5em;
+    }
+
+    
+    div.cotiza .img1{
+        align-self: center;
+        width: 80%;
+    }
+    .market {
+        width: 15%;
+    }
+}
+
+}
