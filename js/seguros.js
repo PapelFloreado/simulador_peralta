@@ -17,19 +17,29 @@ function mostrarSeguros(array) {
               <p id="precio" class="card-text precio fs-6 text">Precio sin impuestos: $${importe}  </p>
               <p id="precioFinal" class="card-text precioFinal fs-6 text">Precio Final: $${valorFinal}</p>  
             </div>
-            <button id="boton${id}" type="button" class="btn ms-2 btn-primary">Agregar al Carrito</button>
+            <button id="boton${id}" type="button" class="btn ms-2 btn-primary liveToastBtn">Agregar al Carrito</button>
             </div>
             </div>
             </div>`
         listadoSeguros.appendChild(div)
         let btnAgregar = document.getElementById(`boton${id}`)
         btnAgregar.addEventListener('click',()=>{
+            const toastLiveExample = document.getElementById('liveToast')
+           
+                const toast = new bootstrap.Toast(toastLiveExample)
+
+                toast.show()
+            
+            
             agregarAlCarrito(el.id)
             jsonCarrito()
             
         })
     })
+
 }
+
+
 function jsonCarrito() {
         localStorage.setItem("carrito", JSON.stringify(carrito))
 }
