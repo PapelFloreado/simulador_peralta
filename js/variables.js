@@ -4,3 +4,5 @@ const sinAlarma = 1.10
 const conAlarma = 0
 
 
+
+

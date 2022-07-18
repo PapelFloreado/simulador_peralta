@@ -1,6 +1,4 @@
 
-
-
 function mostrarSeguros(array) {
     listadoSeguros.innerHTML = ""
     
@@ -27,9 +25,18 @@ function mostrarSeguros(array) {
         let btnAgregar = document.getElementById(`boton${id}`)
         btnAgregar.addEventListener('click',()=>{
             agregarAlCarrito(el.id)
+            jsonCarrito()
+            
         })
     })
 }
+function jsonCarrito() {
+        localStorage.setItem("carrito", JSON.stringify(carrito))
+}
+function removerJson() {
+    localStorage.removeItem("carrito")
+}
+
 
 const agregarAlCarrito = (produId)=>{
     const productoDuplicado = carrito.some(segu => segu.id === produId)
@@ -55,8 +62,9 @@ const actualizarCarro = () =>{
         div.innerHTML = `
         <p>${segu.tipo}</p>
         <p>Precio Final: $${segu.valorFinal}</p>
-        <p>Cantidad: <span id="cantidad-prod">${segu.cantidad}</p>
-        <button onclick="eliminarDelCarrito(${segu.id})" class="btn btn-primary " type="submit">Eliminar del carrito</button>
+        <button type="button" id="${segu.id}" class="btn btn-primary restar">-</button>
+        <span id="cantidad-prod">${segu.cantidad}
+        <button type="button" id="${segu.id}" class="btn btn-primary sumar">+</button>
         `
         listadoCarrito.appendChild(div)
     })
@@ -74,5 +82,50 @@ const eliminarDelCarrito = (produId) => {
 vaciarCarrito.addEventListener("click", ()=>{
     carrito.length = 0
     precioTotal.innerText = 0
+    removerJson()
     actualizarCarro()
 })
+
+listadoCarrito.addEventListener("click", (e)=>{
+
+    const restarProd = e.target.classList.contains("restar")
+    const sumarProd= e.target.classList.contains("sumar")
+    if (sumarProd || restarProd) {
+        for (let i = 0; i < carrito.length; i++) {
+            if (carrito[i].id == e.target.id) {
+                if (sumarProd) {
+                    carrito[i].cantidad +=1
+                    
+                }else if (restarProd) {
+                    carrito[i].cantidad -=1
+                    
+                }
+                jsonCarrito()
+            }
+            if (carrito[i].cantidad <= 0) {
+                carrito.splice (i, 1)
+                jsonCarrito()
+                if(carrito.length < 1){
+                    removerJson()
+                }
+            }
+            
+        }
+        actualizarCarro()
+    } 
+})
+
+function recuperoJson() {
+    if (localStorage.length > 0){
+
+        carritoJson = JSON.parse(localStorage.getItem("carrito"))
+        carritoJson.forEach(producto => {
+            carrito.push(new Seguros(producto.cantidad, producto.img, producto.tipo, producto.importe, producto.description))
+            actualizarCarro()
+        });
+    }
+      
+}
+recuperoJson()
+
+

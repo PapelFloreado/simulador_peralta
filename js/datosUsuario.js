@@ -5,7 +5,7 @@ const emailHost = document.querySelector("#emailHost")
 const btnEnviar = document.querySelector("#submit")
 const recuperarCarrito = document.querySelector("#recuperarCarrito")
 const miCarrito = document.querySelector("#miCarrito")
-
+const totalCompra = document.querySelector("#totalCompra")
 
 
 function guardarDatosUser () {
@@ -25,24 +25,26 @@ btnEnviar.addEventListener("click", (e)=>{
         icon: 'error',
         title: 'oh No!',
         text: 'Parece que faltan algunos datos',
-      }) : (guardarCarrito(), guardarDatosUser(), Swal.fire({
+      }) : (guardarDatosUser(), Swal.fire({
         icon: 'success',
         title: 'Genial!',
         text: 'Tus datos fueron enviados',
-      }))
+      }),storageRemove(),setTimeout(()=>{
+        window.scroll(top)
+      }, 500)
+       ,setTimeout(()=>{
+          location.reload()
+      }, 800))
     
 })
 
-function guardarCarrito(){
-    carrito = JSON.stringify(carrito)
-    localStorage.setItem("carrito", carrito)
+function storageRemove() {
+    localStorage.clear()
 }
-
-
 
 recuperarCarrito.addEventListener("click", (e)=>{
     e.preventDefault()
-    carrito.length === 0 ? Swal.fire({
+    carrito.length=== 0 ? Swal.fire({
         icon: 'error',
         title: 'Aquí no hay nada',
         text: 'Tu carrito todavía está vacio',
@@ -52,13 +54,53 @@ recuperarCarrito.addEventListener("click", (e)=>{
 
 
 function recuperarPedido() {
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || []
-      let item = ""
-          for (el of carrito) {
-              item += `<h3>${el.tipo} - $${el.valorFinal}</h3>`
-          }
-          miCarrito.innerHTML = item
-}
+    debugger
+    if (cotizado.length > 0 && carrito.length === 0){
 
-
+        let cotizado = JSON.parse(localStorage.getItem("cotizado"))
+            cotizado.forEach(el => {
+                cotizado = `<h3>${el.tipo} - $${el.valorFinal} Id: ${el.id}</h3>`
+                
+            });
+            
+        miCarrito.innerHTML = cotizado
     
+    } else if (cotizado.length > 0 && carrito.length !== 0) {
+        let cotizado = JSON.parse(localStorage.getItem("cotizado"))
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || []
+        cotizado.forEach(el => {
+            cotizado = `<h3>${el.tipo} - $${el.valorFinal} Id: ${el.id}</h3>`
+            
+        });
+        
+        miCarrito.innerHTML = cotizado
+        
+        let item = ""
+        for (el of carrito) {
+            
+            item += `<h3>${el.tipo} - $${el.valorFinal} Cantidad:${el.cantidad}</h3>`
+        }
+        miCarrito.innerHTML = item + cotizado
+    
+        let final = carrito.reduce((acc, segu)=> acc + segu.valorFinal * segu.cantidad, 0)
+        let finalTotal = final + cotizado
+        let div = document.createElement("div")
+        div.innerHTML = `<h2>TOTAL FINAL: $${finalTotal}</h2>` 
+        totalCompra.appendChild(div)
+
+    }else if (carrito.length !== 0) {
+        let carrito = JSON.parse(localStorage.getItem("carrito")) || []
+        let item = ""
+        for (el of carrito) {
+            
+            item += `<h3>${el.tipo} - $${el.valorFinal} Cantidad:${el.cantidad}</h3>`
+        }
+        miCarrito.innerHTML = item 
+    
+        let final = carrito.reduce((acc, segu)=> acc + segu.valorFinal * segu.cantidad, 0)
+        let div = document.createElement("div")
+        div.innerHTML = `<h2>TOTAL FINAL: $${final}</h2>` 
+        totalCompra.appendChild(div)
+
+    }
+}
