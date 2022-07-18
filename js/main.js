@@ -32,9 +32,11 @@ function cotizador(e){
         let tipo = "Seguro Personalizado"
         let resultado = parseFloat(metros2.value * precio * IVA * sinAlarma).toFixed(2)
         let cotizacion = document.createElement("div")
-        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado}</h2>
-                                <button id="guardarCotizacion" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
-
+        cotizacion.innerHTML = spinner()
+                                    setTimeout(()=>{
+                                        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado}</h2>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
+                                    }, 1800)
         class Cotizacion {
             constructor (cotizacion) {
                 this.tipo = tipo
@@ -63,9 +65,11 @@ function cotizador(e){
         let tipo = "Seguro Personalizado"
         let resultado = parseFloat(metros2.value * precio * IVA).toFixed(2)
         let cotizacion = document.createElement("div")
-        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado}</h2>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
-
+        cotizacion.innerHTML = spinner()
+                                    setTimeout(()=>{
+                                        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado}</h2>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
+                                    }, 1800)
         class Cotizacion {
             constructor (cotizacion) {
                 this.tipo = tipo
@@ -92,8 +96,11 @@ function cotizador(e){
         let tipo = "Seguro Personalizado"
         let resultado = parseFloat(metros2.value * precio).toFixed(2)
         let cotizacion = document.createElement("div")
-        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado}</h2>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
+        cotizacion.innerHTML = spinner()
+                                    setTimeout(()=>{
+                                        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado}</h2>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
+                                    }, 1800)
 
         class Cotizacion {
             constructor (cotizacion) {
@@ -121,9 +128,11 @@ function cotizador(e){
         let tipo = "Seguro Personalizado"
         let resultado = parseFloat(metros2.value * precio * sinAlarma).toFixed(2)
         let cotizacion = document.createElement("div")
-        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado}</h2>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
-
+        cotizacion.innerHTML = spinner()
+                                    setTimeout(()=>{
+                                        cotizacion.innerHTML = `<h2 id="final">Tu seguro costará $${resultado}</h2>
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Quiero que me Llamen</button>`
+                                    }, 1800)
         class Cotizacion {
             constructor (cotizacion) {
                 this.tipo = tipo
@@ -146,4 +155,11 @@ function cotizador(e){
 
         return cotizacion
     }
+}
+
+const spinner = ()=>{
+    return `<div class="m-3 d-flex align-items-center">
+    <strong class="fs-1" style="width: 3rem; height: 3rem;">Cotizando...</strong>
+    <div class="spinner-border ms-auto" role="status" aria-hidden="true" style="width: 5rem; height: 5rem;"></div>
+  </div>`
 }

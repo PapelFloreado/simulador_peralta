@@ -43,12 +43,23 @@ function storageRemove() {
 }
 
 recuperarCarrito.addEventListener("click", (e)=>{
+    debugger
     e.preventDefault()
-    carrito.length=== 0 ? Swal.fire({
-        icon: 'error',
-        title: 'Aquí no hay nada',
-        text: 'Tu carrito todavía está vacio',
-      }) : recuperarPedido()
+    if (carrito.length > 0 || cotizado.length > 0) {
+        recuperarPedido()
+    }else if (carrito.length < 1) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Aquí no hay nada',
+            text: 'Tu carrito todavía está vacio',
+          })
+    }else if (cotizado.length < 1){
+        Swal.fire({
+            icon: 'error',
+            title: 'Aquí no hay nada',
+            text: 'Tu carrito todavía está vacio',
+          })
+    }
     
 })
 
@@ -62,13 +73,16 @@ function recuperarPedido() {
                 cotizado = `<h3>${el.tipo} - $${el.valorFinal} Id: ${el.id}</h3>`
                 
             });
-            
+                      
         miCarrito.innerHTML = cotizado
     
     } else if (cotizado.length > 0 && carrito.length !== 0) {
-        let cotizado = JSON.parse(localStorage.getItem("cotizado"))
+        
+        let cotizado = JSON.parse(localStorage.getItem("cotizado")) || []
         let carrito = JSON.parse(localStorage.getItem("carrito")) || []
         cotizado.forEach(el => {
+            cotizadoFinal = parseInt(el.valorFinal)
+            cotizado.push(cotizado.tipo, parseInt(cotizado.valorFinal),cotizado.id) 
             cotizado = `<h3>${el.tipo} - $${el.valorFinal} Id: ${el.id}</h3>`
             
         });
@@ -76,19 +90,19 @@ function recuperarPedido() {
         miCarrito.innerHTML = cotizado
         
         let item = ""
-        for (el of carrito) {
+        for (segu of carrito) {
             
-            item += `<h3>${el.tipo} - $${el.valorFinal} Cantidad:${el.cantidad}</h3>`
+            item += `<h3>${segu.tipo} - $${segu.valorFinal} Cantidad:${segu.cantidad}</h3>`
         }
         miCarrito.innerHTML = item + cotizado
     
         let final = carrito.reduce((acc, segu)=> acc + segu.valorFinal * segu.cantidad, 0)
-        let finalTotal = final + cotizado
+        let finalTotal = final + cotizadoFinal
         let div = document.createElement("div")
         div.innerHTML = `<h2>TOTAL FINAL: $${finalTotal}</h2>` 
         totalCompra.appendChild(div)
 
-    }else if (carrito.length !== 0) {
+    }else if (carrito.length > 0) {
         let carrito = JSON.parse(localStorage.getItem("carrito")) || []
         let item = ""
         for (el of carrito) {

@@ -52,7 +52,6 @@ function buscarProducto() {
 }
 
 
-
 function creoID() {
     return parseInt(Math.random() * 10000)
 }
