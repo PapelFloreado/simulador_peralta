@@ -1,3 +1,4 @@
+//Despliega productos en pantalla
 
 function mostrarSeguros(array) {
     listadoSeguros.innerHTML = ""
@@ -39,6 +40,7 @@ function mostrarSeguros(array) {
 
 }
 
+// Funciones para Guardar Caritto a JSON y Remover SI VACIA EL CARRITO ANTES DE COMPRAR
 
 function jsonCarrito() {
         localStorage.setItem("carrito", JSON.stringify(carrito))
@@ -47,6 +49,7 @@ function removerJson() {
     localStorage.removeItem("carrito")
 }
 
+// Agrega productos al carrito y suma cantidad
 
 const agregarAlCarrito = (produId)=>{
     const productoDuplicado = carrito.some(segu => segu.id === produId)
@@ -62,7 +65,9 @@ const agregarAlCarrito = (produId)=>{
         console.log(carrito)
     }
     actualizarCarro()
-}                                         
+}                 
+
+// Actualiza el Carrito cada vez que hace una seleccion
 
 const actualizarCarro = () =>{
     listadoCarrito.innerHTML = ""
@@ -82,6 +87,8 @@ const actualizarCarro = () =>{
     
 }
 
+// Elimina productos del Carrito
+
 const eliminarDelCarrito = (produId) => {
     const item = carrito.find ((segu)=> segu.id === produId)
     const indice = carrito.indexOf(item)
@@ -89,12 +96,16 @@ const eliminarDelCarrito = (produId) => {
     actualizarCarro()
 }
 
+// Vacia Carrito
+
 vaciarCarrito.addEventListener("click", ()=>{
     carrito.length = 0
     precioTotal.innerText = 0
     removerJson()
     actualizarCarro()
 })
+
+// Suma y resta cada elemento del carrito y Actualiza el JSON
 
 listadoCarrito.addEventListener("click", (e)=>{
 
@@ -124,6 +135,8 @@ listadoCarrito.addEventListener("click", (e)=>{
         actualizarCarro()
     } 
 })
+
+// Recupera JSON de carrito si lo hubiera
 
 function recuperoJson() {
     if (localStorage.length > 0){

@@ -1,3 +1,5 @@
+// Clase Constructora
+
 class Seguros {
     constructor (cantidad, img,tipo, importe, description,id, vender,iva, valorFinal ) {
         this.cantidad = cantidad
@@ -17,6 +19,7 @@ class Seguros {
 
 }
 
+// Fetch desde el JSON
 
 const seguros = []
 let carrito = []
@@ -36,6 +39,8 @@ function generadorAutomatico() {
 }
 
 generadorAutomatico()
+
+// Funcion filtrado 
 
 function filtrarProducto (){
     let producto = prompt("ingrese el producto")

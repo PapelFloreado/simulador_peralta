@@ -1,3 +1,4 @@
+// Variables generales.
 
 const select = document.getElementById("select")
 const metros2 = document.getElementById("metros2")
@@ -156,6 +157,8 @@ function cotizador(e){
         return cotizacion
     }
 }
+
+// Animacion de Cotizacion.
 
 const spinner = ()=>{
     return `<div class="m-3 d-flex align-items-center">

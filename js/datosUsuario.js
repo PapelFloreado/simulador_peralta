@@ -1,3 +1,5 @@
+//Datos usuarios para Recuperar Pedido o Cotizacion
+
 const nombre = document.querySelector("#nombre")
 const apellido = document.querySelector("#apellido")
 const emailUser = document.querySelector("#emailUser")
@@ -7,6 +9,7 @@ const recuperarCarrito = document.querySelector("#recuperarCarrito")
 const miCarrito = document.querySelector("#miCarrito")
 const totalCompra = document.querySelector("#totalCompra")
 
+//Guarda Datos User
 
 function guardarDatosUser () {
     const datosUser = {nombre: nombre.value,
@@ -18,6 +21,8 @@ function guardarDatosUser () {
     let datosString = JSON.stringify(datosUser)
     localStorage.setItem("datosUser",datosString)
 }
+
+//Envia Datos y Remueve Local Storage si está OK
 
 btnEnviar.addEventListener("click", (e)=>{
     e.preventDefault()
@@ -42,6 +47,8 @@ function storageRemove() {
     localStorage.clear()
 }
 
+// Recupera datos del Carrito
+
 recuperarCarrito.addEventListener("click", (e)=>{
    
     e.preventDefault()
@@ -63,12 +70,12 @@ recuperarCarrito.addEventListener("click", (e)=>{
     
 })
 
+// Funcion para Recuperar Datos
 
 function recuperarPedido() {
 
-    if (cotizado.length > 0 && carrito.length === 0){
-        miCarrito.innerHTML = ""
-    
+    if (cotizado.length > 0 && carrito.length === 0){ //Recupera Solo Cotizacion Seguro Personal
+            
         let cotizado = JSON.parse(localStorage.getItem("cotizado"))
             cotizado.forEach(el => {
                 cotizado = `<h3>${el.tipo} - $${el.valorFinal} Id: ${el.id}</h3>`
@@ -77,7 +84,7 @@ function recuperarPedido() {
         miCarrito.innerHTML = ""        
         miCarrito.innerHTML = cotizado
     
-    } else if (cotizado.length > 0 && carrito.length !== 0) {
+    } else if (cotizado.length > 0 && carrito.length !== 0) { //Recupera Cotizacion y Carritos de Compras
         
         let cotizado = JSON.parse(localStorage.getItem("cotizado")) || []
         let carrito = JSON.parse(localStorage.getItem("carrito")) || []
@@ -106,7 +113,7 @@ function recuperarPedido() {
         div.innerHTML = `<h2>TOTAL FINAL: $${finalTotal}</h2>` 
         totalCompra.appendChild(div)
 
-    }else if (carrito.length > 0) {
+    }else if (carrito.length > 0) { // Recupera Solo Carrito de compras SIN COTIZACION PERSONAL
         let div = document.createElement("div")
         let carrito = JSON.parse(localStorage.getItem("carrito")) || []
         let item = ""
