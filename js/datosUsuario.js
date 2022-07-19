@@ -43,7 +43,7 @@ function storageRemove() {
 }
 
 recuperarCarrito.addEventListener("click", (e)=>{
-    debugger
+   
     e.preventDefault()
     if (carrito.length > 0 || cotizado.length > 0) {
         recuperarPedido()
@@ -65,15 +65,16 @@ recuperarCarrito.addEventListener("click", (e)=>{
 
 
 function recuperarPedido() {
-    debugger
-    if (cotizado.length > 0 && carrito.length === 0){
 
+    if (cotizado.length > 0 && carrito.length === 0){
+        miCarrito.innerHTML = ""
+    
         let cotizado = JSON.parse(localStorage.getItem("cotizado"))
             cotizado.forEach(el => {
                 cotizado = `<h3>${el.tipo} - $${el.valorFinal} Id: ${el.id}</h3>`
                 
             });
-                      
+        miCarrito.innerHTML = ""        
         miCarrito.innerHTML = cotizado
     
     } else if (cotizado.length > 0 && carrito.length !== 0) {
@@ -94,25 +95,31 @@ function recuperarPedido() {
             
             item += `<h3>${segu.tipo} - $${segu.valorFinal} Cantidad:${segu.cantidad}</h3>`
         }
+        
         miCarrito.innerHTML = item + cotizado
     
         let final = carrito.reduce((acc, segu)=> acc + segu.valorFinal * segu.cantidad, 0)
         let finalTotal = final + cotizadoFinal
         let div = document.createElement("div")
+        totalCompra.innerHTML =""
+        miCarrito.innerHTML = item + cotizado
         div.innerHTML = `<h2>TOTAL FINAL: $${finalTotal}</h2>` 
         totalCompra.appendChild(div)
 
     }else if (carrito.length > 0) {
+        let div = document.createElement("div")
         let carrito = JSON.parse(localStorage.getItem("carrito")) || []
         let item = ""
         for (el of carrito) {
             
             item += `<h3>${el.tipo} - $${el.valorFinal} Cantidad:${el.cantidad}</h3>`
         }
+        
         miCarrito.innerHTML = item 
     
         let final = carrito.reduce((acc, segu)=> acc + segu.valorFinal * segu.cantidad, 0)
-        let div = document.createElement("div")
+        
+        totalCompra.innerHTML =""
         div.innerHTML = `<h2>TOTAL FINAL: $${final}</h2>` 
         totalCompra.appendChild(div)
 
